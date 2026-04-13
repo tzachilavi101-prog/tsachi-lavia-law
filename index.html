@@ -228,35 +228,6 @@
       z-index: 0;
     }
 
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      top: -100px;
-      left: -150px;
-      animation: floatOrb 15s ease-in-out infinite;
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 149, 108, 0.08) 0%, transparent 70%);
-      bottom: -50px;
-      right: -100px;
-      animation: floatOrb 20s ease-in-out infinite reverse;
-    }
-
-    @keyframes floatOrb {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -40px) scale(1.05); }
-      66% { transform: translate(-20px, 20px) scale(0.95); }
-    }
 
     .hero-line {
       position: absolute;
@@ -1178,7 +1149,6 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
-  <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-label">נזיקין · רשלנות רפואית</div>
     <h1>צחי <span class="accent">לביא</span></h1>
