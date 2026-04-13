@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tzachilavi101-prog.github.io/tsachi-lavia-law/sitemap.xml

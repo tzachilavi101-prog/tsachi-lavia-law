@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הצהרת נגישות | עו״ד צחי לביא</title>
+  <meta name="description" content="הצהרת נגישות של אתר עו״ד צחי לביא – נזיקין ורשלנות רפואית. מחויבות מלאה לנגישות דיגיטלית." />
+  <link rel="canonical" href="https://tzachilavi101-prog.github.io/tsachi-lavia-law/accessibility.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0b0b0f;
+      --bg-secondary: #131318;
+      --bg-glass: rgba(255, 255, 255, 0.025);
+      --border-glass: rgba(255, 255, 255, 0.06);
+      --accent: #c8956c;
+      --text-primary: #e8e4df;
+      --text-secondary: #7a7a84;
+      --text-heading: #ffffff;
+      --font-heading: 'Frank Ruhl Libre', serif;
+      --font-body: 'Heebo', sans-serif;
+      --radius-sm: 10px;
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --container: 1100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); direction: rtl; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    body::before { content: ''; position: fixed; inset: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; }
+
+    .navbar { position: fixed; top: 0; right: 0; left: 0; z-index: 1000; padding: 20px 0; background: rgba(11,11,15,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-glass); }
+    .navbar .container { max-width: var(--container); margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--text-heading); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+
+    .page-body { max-width: 780px; margin: 0 auto; padding: 120px 28px 70px; }
+    .page-body h1 { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-heading); margin-bottom: 12px; }
+    .page-divider { width: 50px; height: 3px; background: var(--accent); border-radius: 3px; margin-bottom: 32px; }
+    .page-body h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--text-heading); margin: 32px 0 12px; }
+    .page-body p { font-size: 1rem; line-height: 1.85; color: var(--text-primary); margin-bottom: 14px; font-weight: 300; }
+
+    footer { padding: 36px 0; border-top: 1px solid var(--border-glass); text-align: center; }
+    footer .container { max-width: var(--container); margin: 0 auto; padding: 0 28px; }
+    footer p { font-size: 0.82rem; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">צחי לביא <span>| עו״ד</span></a>
+  </div>
+</nav>
+
+<div class="page-body">
+  <h1>הצהרת נגישות</h1>
+  <div class="page-divider"></div>
+
+  <p>אתר זה שייך לעו״ד צחי לביא ומופעל מתוך מחויבות מלאה לאפשר לכל אדם, לרבות אנשים עם מוגבלויות, גישה שוויונית לתכנים ולשירותים המוצעים בו.</p>
+
+  <h2>מאמצי הנגישות שלנו</h2>
+  <p>אנו פועלים להנגיש את האתר בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע״ג-2013, ובהתאם להנחיות הנגישות לתכני אינטרנט ברמה AA של תקן WCAG 2.1.</p>
+  <p>בין היתר, האתר כולל:</p>
+  <p>שימוש בתגיות HTML סמנטיות, תמיכה בניווט מקלדת, ניגודיות צבעים מותאמת לתקן WCAG AA, תמיכה בהגדלת טקסט, תיאורי alt לתמונות, ומבנה כותרות היררכי ברור.</p>
+
+  <h2>פנייה בנושא נגישות</h2>
+  <p>אם נתקלתם בבעיית נגישות באתר, נשמח לשמוע ולטפל בכך בהקדם. ניתן לפנות אלינו:</p>
+  <p>טלפון: <a href="tel:0542336262">054-2336262</a></p>
+  <p>כתובת: אשקלון סנטר, רח׳ הגדוד העברי 10, אשקלון</p>
+
+  <h2>עדכון אחרון</h2>
+  <p>הצהרת נגישות זו עודכנה לאחרונה בינואר 2025.</p>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2025 צחי לביא, עורך דין. כל הזכויות שמורות.</p>
+  </div>
+</footer>
+
+</body>
+</html>
