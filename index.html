@@ -267,11 +267,56 @@
       background: linear-gradient(to left, transparent, var(--border-glass), var(--accent-glow), var(--border-glass), transparent);
     }
 
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: var(--container);
+      padding: 0 30px;
+    }
+
+    .hero-portrait {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 40px var(--accent-glow-strong);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+      flex-shrink: 0;
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 800px;
+      max-width: 660px;
+    }
+
+    @media (min-width: 769px) {
+      .hero-inner {
+        flex-direction: row;
+        justify-content: center;
+        gap: 60px;
+      }
+      .hero-portrait {
+        width: 260px;
+        height: 260px;
+        order: 2;
+      }
+      .hero-content {
+        text-align: right;
+        order: 1;
+      }
+      .hero-subtitle {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
 
     .hero-label {
@@ -1149,7 +1194,7 @@
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
   <div class="container">
-    <a href="#" class="nav-logo">צחי לביא <span>| עו״ד</span></a>
+    <a href="#" class="nav-logo">עו״ד צחי לביא</a>
     <ul class="nav-links">
       <li><a href="#about">אודות</a></li>
       <li><a href="#areas">תחומי עיסוק</a></li>
@@ -1179,14 +1224,17 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-label">נזיקין · רשלנות רפואית</div>
-    <h1>צחי <span class="accent">לביא</span></h1>
-    <p class="hero-subtitle">מחויבות מלאה ללקוח. ליווי אישי לאורך כל ההליך המשפטי. למעלה מ-14 שנות ניסיון בייצוג תובעים ונתבעים.</p>
-    <a href="#contact" class="hero-cta">
-      בואו נתחיל בשיחת ייעוץ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
-    </a>
+  <div class="hero-inner">
+    <img src="attorney-tsachi-lavia-portrait.png" alt="עו״ד צחי לביא" class="hero-portrait" />
+    <div class="hero-content">
+      <div class="hero-label">נזיקין · רשלנות רפואית</div>
+      <h1>עו״ד צחי <span class="accent">לביא</span></h1>
+      <p class="hero-subtitle">מחויבות מלאה ללקוח. ליווי אישי לאורך כל ההליך המשפטי. למעלה מ-14 שנות ניסיון בייצוג תובעים ונתבעים.</p>
+      <a href="#contact" class="hero-cta">
+        בואו נתחיל בשיחת ייעוץ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+      </a>
+    </div>
   </div>
   <div class="hero-line"></div>
 </section>
