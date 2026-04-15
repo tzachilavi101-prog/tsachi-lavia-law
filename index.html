@@ -51,7 +51,6 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ============================================
@@ -222,8 +221,41 @@
       padding: 120px 0 80px;
     }
 
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
 
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      top: -100px;
+      left: -150px;
+      animation: floatOrb 15s ease-in-out infinite;
+    }
 
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 149, 108, 0.08) 0%, transparent 70%);
+      bottom: -50px;
+      right: -100px;
+      animation: floatOrb 20s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
 
     .hero-line {
       position: absolute;
@@ -238,10 +270,9 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 660px;
+      max-width: 800px;
     }
 
-    @media (min-width: 769px) {
     .hero-label {
       display: inline-block;
       font-size: 0.8rem;
@@ -1117,7 +1148,7 @@
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
   <div class="container">
-    <a href="#" class="nav-logo">עו״ד צחי לביא</a>
+    <a href="#" class="nav-logo">צחי לביא <span>| עו״ד</span></a>
     <ul class="nav-links">
       <li><a href="#about">אודות</a></li>
       <li><a href="#areas">תחומי עיסוק</a></li>
@@ -1126,14 +1157,14 @@
       <li><a href="#videos">סרטונים</a></li>
       <li><a href="#contact">צור קשר</a></li>
     </ul>
-    <div class="nav-hamburger" id="hamburger" role="button" tabindex="0" aria-label="תפריט ניווט" aria-expanded="false" aria-controls="mobileMenu">
+    <div class="nav-hamburger" id="hamburger" aria-label="תפריט">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
 <!-- ===== MOBILE MENU ===== -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="תפריט ניווט" aria-hidden="true">
+<div class="mobile-menu" id="mobileMenu">
   <ul class="mobile-menu-links">
     <li><a href="#about" onclick="closeMenu()">אודות</a></li>
     <li><a href="#areas" onclick="closeMenu()">תחומי עיסוק</a></li>
@@ -1146,13 +1177,14 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-label">נזיקין · רשלנות רפואית</div>
     <h1>צחי <span class="accent">לביא</span></h1>
     <p class="hero-subtitle">מחויבות מלאה ללקוח. ליווי אישי לאורך כל ההליך המשפטי. למעלה מ-14 שנות ניסיון בייצוג תובעים ונתבעים.</p>
     <a href="#contact" class="hero-cta">
       בואו נתחיל בשיחת ייעוץ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
     </a>
   </div>
   <div class="hero-line"></div>
@@ -1198,7 +1230,14 @@
       </div>
       <div class="about-visual reveal reveal-delay-2">
         <div class="about-visual-inner">
-          <img src="images/attorney-tsachi-lavia-portrait.png" alt="עו״ד צחי לביא – עורך דין מומחה לנזיקין ורשלנות רפואית" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);" />
+          <div class="about-visual-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="30" />
+              <path d="M28 40 L40 28 L52 40 L40 52 Z" />
+              <line x1="40" y1="18" x2="40" y2="62" />
+              <line x1="18" y1="40" x2="62" y2="40" />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -1217,7 +1256,7 @@
 
       <div class="area-card reveal">
         <div class="area-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
         <h3>רשלנות רפואית</h3>
         <p>ייצוג נפגעי רשלנות רפואית מול מוסדות רפואיים, רופאים וחברות ביטוח.</p>
@@ -1225,7 +1264,7 @@
 
       <div class="area-card reveal reveal-delay-1">
         <div class="area-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <h3>נזקי גוף</h3>
         <p>תביעות פיצויים בגין נזקי גוף, כולל תאונות עבודה ותאונות דרכים.</p>
@@ -1233,7 +1272,7 @@
 
       <div class="area-card reveal reveal-delay-2">
         <div class="area-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2"/></svg>
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2"/></svg>
         </div>
         <h3>תביעות ביטוח</h3>
         <p>ייצוג מבוטחים מול חברות ביטוח בתביעות פיצויים ומימוש זכויות.</p>
@@ -1241,7 +1280,7 @@
 
       <div class="area-card reveal reveal-delay-1">
         <div class="area-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <h3>ליטיגציה אזרחית</h3>
         <p>ניהול הליכים אזרחיים-מסחריים מורכבים בבתי המשפט.</p>
@@ -1249,7 +1288,7 @@
 
       <div class="area-card reveal reveal-delay-2">
         <div class="area-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <h3>תאונות דרכים</h3>
         <p>ייצוג נפגעי תאונות דרכים לקבלת פיצויים מלאים בהתאם לחוק.</p>
@@ -1320,7 +1359,7 @@
     <div class="articles-grid">
       <a href="article-cancer-diagnosis.html" class="article-card reveal">
         <div class="article-card-img">
-          <img src="article-cancer-diagnosis.png" alt="איחור באבחון סרטן – רשלנות רפואית ואובדן סיכויי החלמה" loading="lazy" decoding="async" />
+          <img src="article-cancer-diagnosis.png" alt="איחור באבחון סרטן" loading="lazy" />
           <div class="article-card-overlay"></div>
           <div class="article-card-category">רשלנות רפואית</div>
         </div>
@@ -1335,7 +1374,7 @@
       </a>
       <a href="article-medical-malpractice-signs.html" class="article-card reveal">
         <div class="article-card-img">
-          <img src="article-medical-malpractice-signs.png" alt="סימנים לזיהוי רשלנות רפואית – מדריך מקיף" loading="lazy" decoding="async" />
+          <img src="article-medical-malpractice-signs.png" alt="איך נדע שנפלנו למקרה של רשלנות רפואית?" loading="lazy" />
           <div class="article-card-overlay"></div>
           <div class="article-card-category">רשלנות רפואית</div>
         </div>
@@ -1350,13 +1389,28 @@
       </a>
       <a href="article-car-accident-malpractice.html" class="article-card reveal">
         <div class="article-card-img">
-          <img src="article-car-accident-malpractice.png" alt="רשלנות רפואית לאחר תאונת דרכים – ייחוד עילה בפלט״ד" loading="lazy" decoding="async" />
+          <img src="article-car-accident-malpractice.png" alt="רשלנות רפואית לאחר תאונת דרכים" loading="lazy" />
           <div class="article-card-overlay"></div>
           <div class="article-card-category">תאונות דרכים</div>
         </div>
         <div class="article-card-body">
           <h3>נפגעת בתאונת דרכים ונגרם לך נזק בבית החולים? המלכודת המשפטית שחובה להכיר</h3>
           <p>למה אסור להגיש תביעת רשלנות רפואית נפרדת, מהו ייחוד העילה בפלת״ד, וסיפור מקרה של CRPS לאחר ניתוח.</p>
+          <div class="article-card-meta">
+            <span>קריאה של 6 דקות</span>
+            <span class="article-card-arrow">←</span>
+          </div>
+        </div>
+      </a>
+      <a href="article-birth-malpractice.html" class="article-card reveal">
+        <div class="article-card-img">
+          <img src="article-birth-malpractice.png" alt="רשלנות רפואית בלידה" loading="lazy" />
+          <div class="article-card-overlay"></div>
+          <div class="article-card-category">רשלנות בלידה</div>
+        </div>
+        <div class="article-card-body">
+          <h3>רשלנות רפואית בלידה: כשזירוז לידה הופך לטרגדיה בלתי נתפסת</h3>
+          <p>שרשרת מחדלים בזירוז לידה, כשל באפידורל והחייאה מאוחרת. מדריך משפטי על נזק ראייתי וזכויות המשפחה.</p>
           <div class="article-card-meta">
             <span>קריאה של 6 דקות</span>
             <span class="article-card-arrow">←</span>
@@ -1411,7 +1465,7 @@
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div>
               <div class="contact-item-label">טלפון</div>
@@ -1420,7 +1474,7 @@
           </div>
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
               <div class="contact-item-label">כתובת</div>
@@ -1429,7 +1483,7 @@
           </div>
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div>
               <div class="contact-item-label">שעות פעילות</div>
@@ -1438,26 +1492,26 @@
           </div>
         </div>
       </div>
-      <form class="contact-form-card reveal reveal-delay-2" id="contactForm" novalidate>
+      <div class="contact-form-card reveal reveal-delay-2">
         <div class="contact-form-title">השאירו פרטים</div>
         <div class="form-group">
           <label for="name">שם מלא</label>
-          <input type="text" id="name" name="name" placeholder="הזינו את שמכם" required autocomplete="name" />
+          <input type="text" id="name" placeholder="הזינו את שמכם" />
         </div>
         <div class="form-group">
           <label for="phone">טלפון</label>
-          <input type="tel" id="phone" name="phone" placeholder="054-0000000" required autocomplete="tel" />
+          <input type="tel" id="phone" placeholder="054-0000000" />
         </div>
         <div class="form-group">
           <label for="email">אימייל</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" dir="ltr" autocomplete="email" />
+          <input type="email" id="email" placeholder="your@email.com" dir="ltr" />
         </div>
         <div class="form-group">
           <label for="message">תיאור קצר של המקרה</label>
-          <textarea id="message" name="message" placeholder="ספרו לנו בקצרה..."></textarea>
+          <textarea id="message" placeholder="ספרו לנו בקצרה..."></textarea>
         </div>
-        <button class="form-submit" type="submit">שליחה</button>
-      </form>
+        <button class="form-submit" type="button">שליחה</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1486,26 +1540,16 @@
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
-  function toggleMenu() {
+  hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('open');
-    const isOpen = mobileMenu.classList.contains('open');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    hamburger.setAttribute('aria-expanded', isOpen);
-    mobileMenu.setAttribute('aria-hidden', !isOpen);
-  }
-
-  hamburger.addEventListener('click', toggleMenu);
-  hamburger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(); }
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
 
   function closeMenu() {
     hamburger.classList.remove('active');
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileMenu.setAttribute('aria-hidden', 'true');
   }
 
   // Scroll reveal
@@ -1557,9 +1601,8 @@
   const statsSection = document.querySelector('.stats');
   if (statsSection) counterObserver.observe(statsSection);
 
-  // Form submit
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
+  // Form submit placeholder
+  document.querySelector('.form-submit').addEventListener('click', () => {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     if (!name || !phone) {
