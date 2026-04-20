@@ -15,7 +15,7 @@ Static Hebrew law-firm website for attorney Tzachi Lavia (עו"ד צחי לבי�
 - Pure static HTML/CSS/JS — no build system, no framework, no npm
 - All pages are standalone `.html` files
 - RTL layout (`dir="rtl"`, `lang="he"`)
-- Google Fonts: `Playfair Display` (headings + body) + `Noto Serif Hebrew` (Hebrew fallback) + `Cormorant Garamond` (labels)
+- Google Fonts: `Assistant` (wght 200/300/400 — entire site) + `Noto Serif Hebrew` (Hebrew-glyph fallback)
 - `style.css` — global design tokens (`:root` CSS variables); linked in every page's `<head>`
 - Inline `<style>` blocks per page for page-specific rules; consume tokens via `var(--...)`
 
@@ -83,12 +83,12 @@ git push origin main
 
 | Variable | Value | Used for |
 |---|---|---|
-| `--font-primary` | `'Playfair Display', 'Noto Serif Hebrew', serif` | All body text, UI, forms |
-| `--font-heading` | `var(--font-primary)` override per page | h1–h3 |
+| `--font-primary` | `'Assistant', 'Noto Serif Hebrew', sans-serif` | All body text, UI, forms |
+| `--font-heading` | `'Assistant', 'Noto Serif Hebrew', sans-serif` | h1–h3 (set per page) |
 | `--font-body` | `var(--font-primary)` | `body`, buttons, inputs |
-| `--font-label` | `'Cormorant Garamond', 'Noto Serif Hebrew', serif` | Eyebrow labels, nav |
 
-**To change the site font:** edit `--font-primary` in `style.css` only.
+**To change the site font:** edit `--font-primary` in `style.css` only.  
+**Font weights in use:** 200 (attorney name display), 300 (body copy), 400 (UI elements, TL mark).
 
 ---
 

@@ -6,7 +6,7 @@
 ============================================ */
 :root {
   /* Primary font: used for all body text, UI labels, and forms.
-     Playfair Display is the display face; Noto Serif Hebrew is the
-     Hebrew-glyph fallback (Playfair Display has no Hebrew support). */
-  --font-primary: 'Playfair Display', 'Noto Serif Hebrew', serif;
+     Assistant is the display face (weight 200–400 for thin/sharp look);
+     Noto Serif Hebrew is the Hebrew-glyph fallback. */
+  --font-primary: 'Assistant', 'Noto Serif Hebrew', sans-serif;
 }
