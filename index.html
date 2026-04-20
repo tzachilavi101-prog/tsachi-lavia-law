@@ -1332,93 +1332,38 @@
 </head>
 <body>
 
-<!-- ===== NAVBAR — Premium (Swiss × Retro-Futurism) ===== -->
-<nav class="navbar" id="navbar" aria-label="ניווט ראשי">
-  <div class="nav-inner">
-
-    <!-- Brand: Pillar Monogram + Wordmark -->
-    <a href="#" class="brand" aria-label="עו״ד צחי לביא — דף הבית">
-      <span class="brand-mark" aria-hidden="true">
-        <svg class="brand-mark-svg" viewBox="0 0 32 48" width="32" height="48" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="bronzeMetal" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#f6cf96"/>
-              <stop offset="45%" stop-color="#d49358"/>
-              <stop offset="100%" stop-color="#7a4a1e"/>
-            </linearGradient>
-            <linearGradient id="bronzeMonogram" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f6cf96"/>
-              <stop offset="100%" stop-color="#d49358"/>
-            </linearGradient>
-            <filter id="bronzeFlame" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="0.5" result="b"/>
-              <feMerge>
-                <feMergeNode in="b"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          <g fill="url(#bronzeMetal)" filter="url(#bronzeFlame)">
-            <!-- Crown (double capital) -->
-            <rect x="0" y="2" width="32" height="3"/>
-            <rect x="3" y="6" width="26" height="2.25"/>
-            <!-- Shaft -->
-            <rect x="11" y="9.5" width="10" height="29"/>
-            <!-- Base (mirror of crown) -->
-            <rect x="3" y="39.75" width="26" height="2.25"/>
-            <rect x="0" y="43" width="32" height="3"/>
-          </g>
-          <!-- Shaft fluting -->
-          <g fill="#18181e" opacity="0.55">
-            <rect x="13.5" y="10.5" width="1" height="27"/>
-            <rect x="15.5" y="10.5" width="1" height="27"/>
-            <rect x="17.5" y="10.5" width="1" height="27"/>
-          </g>
-          <!-- Monogram crossbar (צ.ל mark) -->
-          <g fill="url(#bronzeMonogram)">
-            <rect x="8" y="22.5" width="16" height="1.5"/>
-            <rect x="19" y="24" width="5" height="1"/>
-          </g>
-        </svg>
-      </span>
-      <span class="brand-text">
-        <span class="brand-name">צחי לביא</span>
-        <span class="brand-tag">משרד עורכי דין · נזיקין ורשלנות רפואית</span>
-      </span>
-    </a>
-
-    <!-- Primary Navigation -->
-    <ul class="nav-links" role="menubar">
-      <li role="none"><a role="menuitem" href="#about">אודות</a></li>
-      <li role="none"><a role="menuitem" href="#areas">תחומי עיסוק</a></li>
-      <li role="none"><a role="menuitem" href="#experience">ניסיון</a></li>
-      <li role="none"><a role="menuitem" href="#articles">מאמרים</a></li>
-      <li role="none"><a role="menuitem" href="#videos">סרטונים</a></li>
-    </ul>
-
-    <!-- CTA -->
-    <a href="#contact" class="nav-cta">צרו קשר</a>
-
-    <!-- Mobile toggle -->
-    <button class="nav-hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false" type="button">
-      <span></span><span></span><span></span>
-    </button>
-
+<header style="background:#1a1a1a;position:sticky;top:0;z-index:100;direction:rtl;border-bottom:1px solid rgba(184,131,42,0.15);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(184,131,42,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(184,131,42,0.05) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;"></div>
+  <div style="max-width:1400px;margin:0 auto;padding:2rem 3rem;display:flex;align-items:center;justify-content:flex-start;gap:1.8rem;position:relative;z-index:1;">
+    <div style="flex:1;text-align:right;">
+      <div style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.7rem;letter-spacing:0.4em;color:#b8832a;text-transform:uppercase;margin-bottom:0.5rem;">משרד עורכי דין</div>
+      <div style="font-family:'Playfair Display','Noto Serif Hebrew',serif;font-size:2.3rem;font-weight:700;color:#f0ebe0;line-height:1.05;margin-bottom:0.8rem;">עו&quot;ד צחי לביא</div>
+      <div style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.95rem;color:rgba(240,235,224,0.6);letter-spacing:0.1em;">רשלנות רפואית &nbsp;·&nbsp; נזיקין &nbsp;·&nbsp; ביטוח לאומי</div>
+    </div>
+    <div style="width:96px;height:96px;flex-shrink:0;position:relative;">
+      <div style="width:96px;height:96px;border:1px solid rgba(184,131,42,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;">
+        <div style="width:74px;height:74px;border:1.5px solid rgba(184,131,42,0.65);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;">
+          <div style="position:absolute;width:4px;height:4px;background:#d4a84b;border-radius:50%;top:-2px;left:50%;transform:translateX(-50%);"></div>
+          <div style="position:absolute;width:4px;height:4px;background:#d4a84b;border-radius:50%;right:-2px;top:50%;transform:translateY(-50%);"></div>
+          <div style="position:absolute;width:4px;height:4px;background:#d4a84b;border-radius:50%;bottom:-2px;left:50%;transform:translateX(-50%);"></div>
+          <div style="position:absolute;width:4px;height:4px;background:#d4a84b;border-radius:50%;left:-2px;top:50%;transform:translateY(-50%);"></div>
+          <span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#d4a84b;letter-spacing:-0.03em;direction:ltr;">TL</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="nav-rule" aria-hidden="true"></div>
-</nav>
-
-<!-- ===== MOBILE MENU ===== -->
-<div class="mobile-menu" id="mobileMenu">
-  <ul class="mobile-menu-links">
-    <li><a href="#about" onclick="closeMenu()">אודות</a></li>
-    <li><a href="#areas" onclick="closeMenu()">תחומי עיסוק</a></li>
-    <li><a href="#experience" onclick="closeMenu()">ניסיון</a></li>
-    <li><a href="#articles" onclick="closeMenu()">מאמרים</a></li>
-    <li><a href="#videos" onclick="closeMenu()">סרטונים</a></li>
-    <li><a href="#contact" onclick="closeMenu()">צור קשר</a></li>
-  </ul>
-</div>
+  <nav style="border-top:1px solid rgba(184,131,42,0.12);padding:1rem 2rem;display:flex;justify-content:center;align-items:center;gap:2rem;position:relative;z-index:1;">
+    <a href="index.html" style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.82rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,235,224,0.55);text-decoration:none;transition:color 0.2s;">ראשי</a>
+    <span style="width:3px;height:3px;background:rgba(184,131,42,0.4);border-radius:50%;"></span>
+    <a href="#about" style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.82rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,235,224,0.55);text-decoration:none;">אודות</a>
+    <span style="width:3px;height:3px;background:rgba(184,131,42,0.4);border-radius:50%;"></span>
+    <a href="#services" style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.82rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,235,224,0.55);text-decoration:none;">תחומי עיסוק</a>
+    <span style="width:3px;height:3px;background:rgba(184,131,42,0.4);border-radius:50%;"></span>
+    <a href="#cases" style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.82rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,235,224,0.55);text-decoration:none;">פסקי דין</a>
+    <span style="width:3px;height:3px;background:rgba(184,131,42,0.4);border-radius:50%;"></span>
+    <a href="#contact" style="font-family:'Cormorant Garamond','Noto Serif Hebrew',serif;font-size:0.82rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,235,224,0.55);text-decoration:none;">צור קשר</a>
+  </nav>
+</header>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
