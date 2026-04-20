@@ -51,7 +51,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
   <style>
     /* ============================================
        CSS CUSTOM PROPERTIES
@@ -122,80 +122,245 @@
     }
 
     /* ============================================
-       NAVIGATION
+       NAVIGATION — Premium (Swiss Minimalism × Retro-Futurism)
     ============================================ */
+    :root {
+      --nav-bg: #18181e;
+      --nav-bg-scrolled: rgba(24, 24, 30, 0.88);
+      --nav-bronze-light: #f6cf96;
+      --nav-bronze: #d49358;
+      --nav-bronze-deep: #7a4a1e;
+      --nav-rule: rgba(212, 147, 88, 0.22);
+      --nav-text: #ffffff;
+      --nav-text-dim: #9a9aa4;
+      --font-premium: 'Playfair Display', 'Frank Ruhl Libre', serif;
+      --nav-elev: 0 8px 28px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+      --nav-bronze-glow: 0 0 14px rgba(212, 147, 88, 0.35);
+    }
+
     .navbar {
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
       z-index: 1000;
-      padding: 20px 0;
+      padding: 0;
+      background: var(--nav-bg);
       transition: var(--transition);
+      box-shadow: var(--nav-elev);
     }
 
     .navbar.scrolled {
-      background: rgba(11, 11, 15, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-glass);
-      padding: 14px 0;
+      background: var(--nav-bg-scrolled);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
     }
 
-    .navbar .container {
-      display: flex;
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
+      gap: 36px;
+      transition: var(--transition);
     }
 
-    .nav-logo {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-heading);
+    .navbar.scrolled .nav-inner {
+      padding: 12px 24px;
+    }
+
+    .nav-rule {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--nav-rule) 20%,
+        var(--nav-rule) 80%,
+        transparent 100%
+      );
+    }
+
+    /* Brand block */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--nav-text);
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 52px;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.55))
+              drop-shadow(0 0 8px rgba(212, 147, 88, 0.18));
+      transition: var(--transition);
+    }
+
+    .brand:hover .brand-mark {
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.65))
+              drop-shadow(0 0 14px rgba(212, 147, 88, 0.45));
+      transform: translateY(-1px);
+    }
+
+    .brand-mark-svg {
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .brand-name {
+      font-family: var(--font-premium);
+      font-weight: 600;
+      font-size: 1.35rem;
       letter-spacing: 0.5px;
+      color: var(--nav-text);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     }
 
-    .nav-logo span {
-      color: var(--accent);
+    .brand-tag {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.62rem;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: var(--nav-bronze);
     }
 
+    /* Nav links — Swiss grid */
     .nav-links {
       display: flex;
-      gap: 8px;
+      justify-content: center;
+      gap: 2px;
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .nav-links a {
-      padding: 8px 18px;
-      font-size: 0.88rem;
+      position: relative;
+      display: inline-block;
+      padding: 10px 18px;
+      font-family: var(--font-premium);
+      font-size: 0.95rem;
       font-weight: 500;
-      color: var(--text-secondary);
-      border-radius: 8px;
+      color: var(--nav-text-dim);
+      text-decoration: none;
+      letter-spacing: 0.4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 6px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--nav-bronze-light),
+        var(--nav-bronze),
+        var(--nav-bronze-deep)
+      );
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: var(--nav-bronze-glow);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--nav-text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    /* CTA button — flaming bronze */
+    .nav-cta {
+      display: inline-block;
+      padding: 11px 22px;
+      font-family: var(--font-premium);
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      color: #1a1a1f;
+      background: linear-gradient(
+        135deg,
+        var(--nav-bronze-light) 0%,
+        var(--nav-bronze) 55%,
+        var(--nav-bronze-deep) 100%
+      );
+      border: 1px solid rgba(246, 207, 150, 0.4);
+      border-radius: 2px;
+      text-decoration: none;
+      box-shadow:
+        0 4px 14px rgba(212, 147, 88, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
       transition: var(--transition);
       position: relative;
+      overflow: hidden;
     }
 
-    .nav-links a:hover {
-      color: var(--text-heading);
-      background: var(--bg-glass-hover);
+    .nav-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
     }
 
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 6px 20px rgba(212, 147, 88, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-cta:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Mobile hamburger */
     .nav-hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 8px;
+      padding: 10px;
+      background: transparent;
+      border: 1px solid var(--nav-rule);
+      border-radius: 2px;
       z-index: 1001;
     }
 
     .nav-hamburger span {
-      width: 24px;
-      height: 2px;
-      background: var(--text-primary);
-      border-radius: 2px;
+      width: 22px;
+      height: 1.5px;
+      background: var(--nav-bronze);
+      border-radius: 0;
       transition: var(--transition);
+      box-shadow: 0 0 6px rgba(212, 147, 88, 0.3);
     }
 
     .nav-hamburger.active span:nth-child(1) {
@@ -206,6 +371,23 @@
     }
     .nav-hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 860px) {
+      .nav-inner {
+        grid-template-columns: auto 1fr auto;
+        gap: 16px;
+      }
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+      .nav-hamburger {
+        display: flex;
+      }
+      .brand-tag {
+        display: none;
+      }
     }
 
     /* ============================================
@@ -1145,22 +1327,80 @@
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="#" class="nav-logo">צחי לביא <span>| עו״ד</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">אודות</a></li>
-      <li><a href="#areas">תחומי עיסוק</a></li>
-      <li><a href="#experience">ניסיון</a></li>
-      <li><a href="#articles">מאמרים</a></li>
-      <li><a href="#videos">סרטונים</a></li>
-      <li><a href="#contact">צור קשר</a></li>
+<!-- ===== NAVBAR — Premium (Swiss × Retro-Futurism) ===== -->
+<nav class="navbar" id="navbar" aria-label="ניווט ראשי">
+  <div class="nav-inner">
+
+    <!-- Brand: Pillar Monogram + Wordmark -->
+    <a href="#" class="brand" aria-label="עו״ד צחי לביא — דף הבית">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="brand-mark-svg" viewBox="0 0 32 48" width="32" height="48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bronzeMetal" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f6cf96"/>
+              <stop offset="45%" stop-color="#d49358"/>
+              <stop offset="100%" stop-color="#7a4a1e"/>
+            </linearGradient>
+            <linearGradient id="bronzeMonogram" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f6cf96"/>
+              <stop offset="100%" stop-color="#d49358"/>
+            </linearGradient>
+            <filter id="bronzeFlame" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="0.5" result="b"/>
+              <feMerge>
+                <feMergeNode in="b"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <g fill="url(#bronzeMetal)" filter="url(#bronzeFlame)">
+            <!-- Crown (double capital) -->
+            <rect x="0" y="2" width="32" height="3"/>
+            <rect x="3" y="6" width="26" height="2.25"/>
+            <!-- Shaft -->
+            <rect x="11" y="9.5" width="10" height="29"/>
+            <!-- Base (mirror of crown) -->
+            <rect x="3" y="39.75" width="26" height="2.25"/>
+            <rect x="0" y="43" width="32" height="3"/>
+          </g>
+          <!-- Shaft fluting -->
+          <g fill="#18181e" opacity="0.55">
+            <rect x="13.5" y="10.5" width="1" height="27"/>
+            <rect x="15.5" y="10.5" width="1" height="27"/>
+            <rect x="17.5" y="10.5" width="1" height="27"/>
+          </g>
+          <!-- Monogram crossbar (צ.ל mark) -->
+          <g fill="url(#bronzeMonogram)">
+            <rect x="8" y="22.5" width="16" height="1.5"/>
+            <rect x="19" y="24" width="5" height="1"/>
+          </g>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">צחי לביא</span>
+        <span class="brand-tag">Advocate · Law Office</span>
+      </span>
+    </a>
+
+    <!-- Primary Navigation -->
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a role="menuitem" href="#about">אודות</a></li>
+      <li role="none"><a role="menuitem" href="#areas">תחומי עיסוק</a></li>
+      <li role="none"><a role="menuitem" href="#experience">ניסיון</a></li>
+      <li role="none"><a role="menuitem" href="#articles">מאמרים</a></li>
+      <li role="none"><a role="menuitem" href="#videos">סרטונים</a></li>
     </ul>
-    <div class="nav-hamburger" id="hamburger" aria-label="תפריט">
+
+    <!-- CTA -->
+    <a href="#contact" class="nav-cta">צרו קשר</a>
+
+    <!-- Mobile toggle -->
+    <button class="nav-hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false" type="button">
       <span></span><span></span><span></span>
-    </div>
+    </button>
+
   </div>
+  <div class="nav-rule" aria-hidden="true"></div>
 </nav>
 
 <!-- ===== MOBILE MENU ===== -->
