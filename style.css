@@ -1,0 +1,12 @@
+/* ============================================
+   GLOBAL DESIGN TOKENS — tsachi-lavia-law
+   Single source of truth for typography.
+   All font-family declarations in page <style>
+   blocks should reference these variables.
+============================================ */
+:root {
+  /* Primary font: used for all body text, UI labels, and forms.
+     Playfair Display is the display face; Noto Serif Hebrew is the
+     Hebrew-glyph fallback (Playfair Display has no Hebrew support). */
+  --font-primary: 'Playfair Display', 'Noto Serif Hebrew', serif;
+}
