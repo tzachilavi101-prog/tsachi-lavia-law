@@ -1,0 +1,10 @@
+{
+  "name": "tsachi-lavia-law",
+  "version": "1.0.0",
+  "description": "Static law-firm website — עו\"ד צחי לביא",
+  "private": true,
+  "scripts": {
+    "lint:articles": "node scripts/lint-articles.js",
+    "preview": "npx serve ."
+  }
+}

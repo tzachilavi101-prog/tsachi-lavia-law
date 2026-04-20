@@ -92,6 +92,11 @@ git push origin main
 
 ---
 
+## Commands
+
+- **Preview**: `npm run preview` — serves the site locally via `npx serve .`
+- **Lint articles**: `npm run lint:articles` — validates all `article-*.html` files (disclaimer, SEO meta, H1 count, semantic tags, indentation). Exits with code 1 if any file fails; run before committing article changes.
+
 ## Code Style & Guidelines
 
 - **HTML**: Use semantic HTML5 tags. Maintain accessibility (ARIA labels) on interactive elements.
