@@ -1,0 +1,5 @@
+# Claude Code internal directory
+.claude/
+
+# Backup files
+*.backup
