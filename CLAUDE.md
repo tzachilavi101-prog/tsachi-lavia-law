@@ -15,8 +15,9 @@ Static Hebrew law-firm website for attorney Tzachi Lavia (עו"ד צחי לבי�
 - Pure static HTML/CSS/JS — no build system, no framework, no npm
 - All pages are standalone `.html` files
 - RTL layout (`dir="rtl"`, `lang="he"`)
-- Google Fonts: `Frank Ruhl Libre` (headings) + `Heebo` (body)
-- Inline `<style>` blocks (no external CSS files)
+- Google Fonts: `Playfair Display` (headings + body) + `Noto Serif Hebrew` (Hebrew fallback) + `Cormorant Garamond` (labels)
+- `style.css` — global design tokens (`:root` CSS variables); linked in every page's `<head>`
+- Inline `<style>` blocks per page for page-specific rules; consume tokens via `var(--...)`
 
 ---
 
@@ -75,6 +76,37 @@ git add <files>
 git commit -m "..."
 git push origin main
 ```
+
+---
+
+## Global Tokens (style.css)
+
+| Variable | Value | Used for |
+|---|---|---|
+| `--font-primary` | `'Playfair Display', 'Noto Serif Hebrew', serif` | All body text, UI, forms |
+| `--font-heading` | `var(--font-primary)` override per page | h1–h3 |
+| `--font-body` | `var(--font-primary)` | `body`, buttons, inputs |
+| `--font-label` | `'Cormorant Garamond', 'Noto Serif Hebrew', serif` | Eyebrow labels, nav |
+
+**To change the site font:** edit `--font-primary` in `style.css` only.
+
+---
+
+## Code Style & Guidelines
+
+- **HTML**: Use semantic HTML5 tags. Maintain accessibility (ARIA labels) on interactive elements.
+- **Naming**: Use kebab-case for all file names (e.g., `article-medical-malpractice.html`).
+- **Formatting**: 2-space indentation. Keep `<meta>` tags (title, description, OG) updated for SEO on every page.
+- **Inline styles**: All CSS lives in `<style>` blocks within each HTML file — no external `.css` files.
+- **Validation**: Run `html-validator` before committing to catch syntax errors.
+
+---
+
+## Critical Content Rules
+
+- All articles must maintain a **professional legal tone**.
+- Every article page must include a **disclaimer footer** (e.g., "האמור אינו מהווה ייעוץ משפטי").
+- Do **not** re-add the circular portrait to the hero section — it was intentionally removed.
 
 ---
 
