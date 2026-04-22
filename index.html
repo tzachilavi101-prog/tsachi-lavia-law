@@ -51,7 +51,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" >
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&family=Noto+Serif+Hebrew:wght@300;400;600&display=swap" rel="stylesheet" >
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" >
   <style>
     .container {
@@ -61,271 +61,14 @@
     }
 
     /* ============================================
-       NAVIGATION — Premium (Swiss Minimalism × Retro-Futurism)
+       PAGE-LEVEL TOKENS
+       The .site-header on index.html is tall (eyebrow + display
+       name + tagline + nav strip). Declaring --nav-height here
+       feeds html { scroll-padding-top: var(--nav-height) } in
+       style.css so anchor links don't scroll under the header.
     ============================================ */
     :root {
-      --nav-bg: #18181e;
-      --nav-bg-scrolled: rgba(24, 24, 30, 0.88);
-      --nav-bronze-light: #f6cf96;
-      --nav-bronze: #d49358;
-      --nav-bronze-deep: #7a4a1e;
-      --nav-rule: rgba(212, 147, 88, 0.22);
-      --nav-text: #ffffff;
-      --nav-text-dim: #9a9aa4;
-      --font-premium: 'Assistant', sans-serif;
-      --nav-elev: 0 8px 28px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
-      --nav-bronze-glow: 0 0 14px rgba(212, 147, 88, 0.35);
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      z-index: 1000;
-      padding: 0;
-      background: var(--nav-bg);
-      transition: var(--transition);
-      box-shadow: var(--nav-elev);
-    }
-
-    .navbar.scrolled {
-      background: var(--nav-bg-scrolled);
-      backdrop-filter: blur(24px) saturate(140%);
-      -webkit-backdrop-filter: blur(24px) saturate(140%);
-    }
-
-    .nav-inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 36px;
-      transition: var(--transition);
-    }
-
-    .navbar.scrolled .nav-inner {
-      padding: 12px 24px;
-    }
-
-    .nav-rule {
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--nav-rule) 20%,
-        var(--nav-rule) 80%,
-        transparent 100%
-      );
-    }
-
-    /* Brand block */
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: var(--nav-text);
-    }
-
-    .brand-mark {
-      display: inline-grid;
-      place-items: center;
-      width: 44px;
-      height: 52px;
-      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.55))
-              drop-shadow(0 0 8px rgba(212, 147, 88, 0.18));
-      transition: var(--transition);
-    }
-
-    .brand:hover .brand-mark {
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.65))
-              drop-shadow(0 0 14px rgba(212, 147, 88, 0.45));
-      transform: translateY(-1px);
-    }
-
-    .brand-mark-svg {
-      display: block;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      line-height: 1;
-    }
-
-    .brand-name {
-      font-family: var(--font-premium);
-      font-weight: 600;
-      font-size: 1.35rem;
-      letter-spacing: 0.5px;
-      color: var(--nav-text);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-    }
-
-    .brand-tag {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 0.7rem;
-      letter-spacing: 0.6px;
-      color: var(--nav-bronze);
-    }
-
-    /* Nav links — Swiss grid */
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 2px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .nav-links a {
-      position: relative;
-      display: inline-block;
-      padding: 10px 18px;
-      font-family: var(--font-premium);
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--nav-text-dim);
-      text-decoration: none;
-      letter-spacing: 0.4px;
-      transition: var(--transition);
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 6px;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        var(--nav-bronze-light),
-        var(--nav-bronze),
-        var(--nav-bronze-deep)
-      );
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: var(--nav-bronze-glow);
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: var(--nav-text);
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a:focus-visible::after {
-      transform: scaleX(1);
-    }
-
-    /* CTA button — flaming bronze */
-    .nav-cta {
-      display: inline-block;
-      padding: 11px 22px;
-      font-family: var(--font-premium);
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      color: #1a1a1f;
-      background: linear-gradient(
-        135deg,
-        var(--nav-bronze-light) 0%,
-        var(--nav-bronze) 55%,
-        var(--nav-bronze-deep) 100%
-      );
-      border: 1px solid rgba(246, 207, 150, 0.4);
-      border-radius: 2px;
-      text-decoration: none;
-      box-shadow:
-        0 4px 14px rgba(212, 147, 88, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-cta::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.35),
-        transparent
-      );
-      transform: translateX(-100%);
-      transition: transform 0.6s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 6px 20px rgba(212, 147, 88, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.25);
-    }
-
-    .nav-cta:hover::before {
-      transform: translateX(100%);
-    }
-
-    /* Mobile hamburger */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 10px;
-      background: transparent;
-      border: 1px solid var(--nav-rule);
-      border-radius: 2px;
-      z-index: 1001;
-    }
-
-    .nav-hamburger span {
-      width: 22px;
-      height: 1.5px;
-      background: var(--nav-bronze);
-      border-radius: 0;
-      transition: var(--transition);
-      box-shadow: 0 0 6px rgba(212, 147, 88, 0.3);
-    }
-
-    .nav-hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .nav-hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav-hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    @media (max-width: 860px) {
-      .nav-inner {
-        grid-template-columns: auto 1fr auto;
-        gap: 16px;
-      }
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-      .nav-hamburger {
-        display: flex;
-      }
-      .brand-tag {
-        display: none;
-      }
+      --nav-height: 220px;
     }
 
     /* ============================================
@@ -413,7 +156,8 @@
     .hero h1 {
       font-family: var(--font-heading);
       font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 900;
+      /* weight is owned by style.css (.hero h1 { font-weight: 300 })
+         so the firm name matches the site-header treatment. */
       color: var(--text-heading);
       line-height: 1.15;
       margin-bottom: 20px;
@@ -1096,62 +840,7 @@
       margin-bottom: 24px;
     }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-glass);
-      border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      transition: var(--transition);
-      outline: none;
-      direction: rtl;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .form-group textarea {
-      height: 110px;
-      resize: vertical;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--accent);
-      color: var(--bg-primary);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .form-submit:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 12px 30px rgba(200, 149, 108, 0.2);
-    }
+    /* Form group + submit styles moved to style.css (section 20) */
 
     /* ============================================
        FOOTER
@@ -1173,25 +862,7 @@
       text-decoration: underline;
     }
 
-    /* ============================================
-       SCROLL ANIMATIONS
-    ============================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
+    /* Scroll-reveal animation moved to style.css (section 24) */
 
     /* ============================================
        MOBILE MENU
@@ -1347,7 +1018,7 @@
     </div>
     <div class="about-content">
       <div class="about-text reveal">
-        <p>17 שנות ניסיון בליטיגציה אזרחית, עם מיקוד בדיני נזיקין — ובתוכם, בעיקר, ברשלנות רפואית. הגעתי לתחום דרך משיכה ברורה לממשק שבין משפט ורפואה; זה המקום שבו אני מביא את הערך המקצועי המדויק ביותר שלי: ירידה לפרטים, קריאה זהירה של חומר רפואי, ויכולת לבנות תיק סביב מה שנראה לפעמים לאחרים כמו כאוס.</p>
+        <p>מעל 15 שנות ניסיון בליטיגציה אזרחית, עם מיקוד בדיני נזיקין — ובתוכם, בעיקר, ברשלנות רפואית. הגעתי לתחום דרך משיכה ברורה לממשק שבין משפט ורפואה; זה המקום שבו אני מביא את הערך המקצועי המדויק ביותר שלי: ירידה לפרטים, קריאה זהירה של חומר רפואי, ויכולת לבנות תיק סביב מה שנראה לפעמים לאחרים כמו כאוס.</p>
         <blockquote class="about-quote">"אין כלל זהב, פרט לאינטואיציה בריאה ונחישות לברר את האמת."</blockquote>
         <p>לאורך השנים עבדתי במשרדים מובילים במרכז הארץ — גם בצד של ייצוג התובעים וגם בצד של ייצוג הנתבעים בתיקי רשלנות רפואית ונזיקין. הניסיון הזה, משני צידי המתרס, הוא כלי עבודה יומיומי: הוא מאפשר לקרוא כל תיק גם מתוך נקודת המבט של מי שתוקף, וגם מתוך נקודת המבט של מי שינסה לזרוע ספק ולהדוף.</p>
         <blockquote class="about-quote">"הסוד הוא לדעת לשחק את השחמט הזה כשאתה יודע מהם המהלכים שעומדים לרשות היריב שלך."</blockquote>
