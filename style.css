@@ -1,0 +1,2078 @@
+/* =================================================================
+   tsachi-lavia-law  ·  Material Design 3 System
+   Theme   : Dark
+   Seed    : #c8956c  (Warm Amber / Terracotta)
+   Fonts   : Roboto (Latin/UI labels)  ·  Assistant (Hebrew body)
+             Noto Sans Hebrew (Hebrew fallback)
+   ─────────────────────────────────────────────────────────────
+   Structure:
+     1.  Font Import
+     2.  MD3 System Color Tokens   (dark, seed-derived)
+     3.  MD3 Elevation Tokens
+     4.  MD3 Shape Tokens
+     5.  MD3 Motion Tokens
+     6.  MD3 Typography Tokens
+     7.  Site-Level Semantic Aliases  (keeps existing var() usage)
+     8.  Reset & Base
+     9.  Site Header  (shared – all pages)
+    10.  Navbar  (index.html fixed top nav)
+    11.  Hero
+    12.  Stats Bar
+    13.  Sections – shared
+    14.  About
+    15.  Practice Area Cards
+    16.  Article Cards  (index.html grid)
+    17.  Badge
+    18.  Video Cards
+    19.  Timeline
+    20.  Contact
+    21.  Article Pages – Nav & Layout
+    22.  Article Content Components
+    23.  Pregnancy-specific Components
+    24.  Reveal Animation
+    25.  Responsive
+================================================================= */
+
+/* ─── 1. FONT IMPORT ──────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Assistant:wght@300;400;500;600;700&family=Noto+Sans+Hebrew:wght@300;400;500;700&display=swap');
+
+/* ─── 2. MD3 SYSTEM COLOR TOKENS  (dark, seed #c8956c) ────────── */
+:root {
+  /* Primary — warm amber derived from seed */
+  --md-sys-color-primary:               #F0C27A;
+  --md-sys-color-on-primary:            #1E0E00;
+  --md-sys-color-primary-container:     #452400;
+  --md-sys-color-on-primary-container:  #FFE0BA;
+  --md-sys-color-primary-fixed:         #FFE0BA;
+  --md-sys-color-primary-fixed-dim:     #F0C27A;
+  --md-sys-color-on-primary-fixed:      #1E0E00;
+  --md-sys-color-on-primary-fixed-variant: #3D2000;
+  --md-sys-color-inverse-primary:       #8A5B2A;
+
+  /* Secondary — muted warm sand */
+  --md-sys-color-secondary:             #D4B290;
+  --md-sys-color-on-secondary:          #2F1900;
+  --md-sys-color-secondary-container:   #4A2C00;
+  --md-sys-color-on-secondary-container:#FFE0BA;
+
+  /* Tertiary — sage (balance / trust) */
+  --md-sys-color-tertiary:              #A4C97F;
+  --md-sys-color-on-tertiary:           #1A3503;
+  --md-sys-color-tertiary-container:    #2A4D0F;
+  --md-sys-color-on-tertiary-container: #C0E693;
+
+  /* Error */
+  --md-sys-color-error:                 #FFB4AB;
+  --md-sys-color-on-error:              #690005;
+  --md-sys-color-error-container:       #93000A;
+  --md-sys-color-on-error-container:    #FFDAD6;
+
+  /* Surface hierarchy — warm-tinted near-black */
+  --md-sys-color-surface:               #1A1310;
+  --md-sys-color-surface-dim:           #131009;
+  --md-sys-color-surface-bright:        #3B322C;
+  --md-sys-color-surface-container-lowest:  #0E0B08;
+  --md-sys-color-surface-container-low:     #211A14;
+  --md-sys-color-surface-container:         #261F18;
+  --md-sys-color-surface-container-high:    #302722;
+  --md-sys-color-surface-container-highest: #3B302A;
+  --md-sys-color-on-surface:            #EDE0D4;
+  --md-sys-color-on-surface-variant:    #D1C4BC;
+  --md-sys-color-outline:               #9A8D86;
+  --md-sys-color-outline-variant:       #4E4540;
+  --md-sys-color-inverse-surface:       #EDE0D4;
+  --md-sys-color-inverse-on-surface:    #342E2B;
+  --md-sys-color-scrim:                 #000000;
+  --md-sys-color-shadow:                #000000;
+  --md-sys-color-background:            #1A1310;
+  --md-sys-color-on-background:         #EDE0D4;
+
+  /* ─── 3. MD3 ELEVATION TOKENS ───────────────────────────────── */
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1:
+    0px 1px 2px  rgba(0, 0, 0, .30),
+    0px 1px 3px 1px rgba(0, 0, 0, .15);
+  --md-sys-elevation-level2:
+    0px 1px 2px  rgba(0, 0, 0, .30),
+    0px 2px 6px 2px rgba(0, 0, 0, .15);
+  --md-sys-elevation-level3:
+    0px 4px 8px 3px rgba(0, 0, 0, .15),
+    0px 1px 3px     rgba(0, 0, 0, .30);
+  --md-sys-elevation-level4:
+    0px 6px 10px 4px rgba(0, 0, 0, .15),
+    0px 2px 3px      rgba(0, 0, 0, .30);
+  --md-sys-elevation-level5:
+    0px 8px 12px 6px rgba(0, 0, 0, .15),
+    0px 4px 4px      rgba(0, 0, 0, .30);
+
+  /* ─── 4. MD3 SHAPE TOKENS ───────────────────────────────────── */
+  --md-sys-shape-corner-none:          0px;
+  --md-sys-shape-corner-extra-small:   4px;
+  --md-sys-shape-corner-small:         8px;
+  --md-sys-shape-corner-medium:        12px;
+  --md-sys-shape-corner-large:         16px;
+  --md-sys-shape-corner-extra-large:   28px;
+  --md-sys-shape-corner-full:          9999px;
+
+  /* ─── 5. MD3 MOTION TOKENS ──────────────────────────────────── */
+  --md-sys-motion-easing-standard:            cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --md-sys-motion-easing-emphasized:          cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  --md-sys-motion-duration-short1:   50ms;
+  --md-sys-motion-duration-short2:  100ms;
+  --md-sys-motion-duration-short3:  150ms;
+  --md-sys-motion-duration-short4:  200ms;
+  --md-sys-motion-duration-medium1: 250ms;
+  --md-sys-motion-duration-medium2: 300ms;
+  --md-sys-motion-duration-medium3: 350ms;
+  --md-sys-motion-duration-medium4: 400ms;
+  --md-sys-motion-duration-long1:   450ms;
+  --md-sys-motion-duration-long2:   500ms;
+
+  /* ─── 6. MD3 TYPOGRAPHY TOKENS ──────────────────────────────── */
+  /* Display */
+  --md-sys-typescale-display-large-font:         'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-display-large-size:         57px;
+  --md-sys-typescale-display-large-line-height:  64px;
+  --md-sys-typescale-display-large-weight:       400;
+  --md-sys-typescale-display-large-tracking:     -0.25px;
+  --md-sys-typescale-display-medium-font:        'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-display-medium-size:        45px;
+  --md-sys-typescale-display-medium-line-height: 52px;
+  --md-sys-typescale-display-medium-weight:      400;
+  --md-sys-typescale-display-small-font:         'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-display-small-size:         36px;
+  --md-sys-typescale-display-small-line-height:  44px;
+  --md-sys-typescale-display-small-weight:       400;
+  /* Headline */
+  --md-sys-typescale-headline-large-font:        'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-headline-large-size:        32px;
+  --md-sys-typescale-headline-large-line-height: 40px;
+  --md-sys-typescale-headline-large-weight:      400;
+  --md-sys-typescale-headline-medium-font:       'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-headline-medium-size:       28px;
+  --md-sys-typescale-headline-medium-line-height:36px;
+  --md-sys-typescale-headline-medium-weight:     400;
+  --md-sys-typescale-headline-small-font:        'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-headline-small-size:        24px;
+  --md-sys-typescale-headline-small-line-height: 32px;
+  --md-sys-typescale-headline-small-weight:      400;
+  /* Title */
+  --md-sys-typescale-title-large-font:           'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-title-large-size:           22px;
+  --md-sys-typescale-title-large-line-height:    28px;
+  --md-sys-typescale-title-large-weight:         400;
+  --md-sys-typescale-title-medium-font:          'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-title-medium-size:          16px;
+  --md-sys-typescale-title-medium-line-height:   24px;
+  --md-sys-typescale-title-medium-weight:        500;
+  --md-sys-typescale-title-medium-tracking:      0.15px;
+  --md-sys-typescale-title-small-font:           'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-title-small-size:           14px;
+  --md-sys-typescale-title-small-line-height:    20px;
+  --md-sys-typescale-title-small-weight:         500;
+  --md-sys-typescale-title-small-tracking:       0.1px;
+  /* Body — Hebrew-first stack */
+  --md-sys-typescale-body-large-font:            'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
+  --md-sys-typescale-body-large-size:            16px;
+  --md-sys-typescale-body-large-line-height:     24px;
+  --md-sys-typescale-body-large-weight:          400;
+  --md-sys-typescale-body-large-tracking:        0.5px;
+  --md-sys-typescale-body-medium-font:           'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
+  --md-sys-typescale-body-medium-size:           14px;
+  --md-sys-typescale-body-medium-line-height:    20px;
+  --md-sys-typescale-body-medium-weight:         400;
+  --md-sys-typescale-body-medium-tracking:       0.25px;
+  --md-sys-typescale-body-small-font:            'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
+  --md-sys-typescale-body-small-size:            12px;
+  --md-sys-typescale-body-small-line-height:     16px;
+  --md-sys-typescale-body-small-weight:          400;
+  --md-sys-typescale-body-small-tracking:        0.4px;
+  /* Label */
+  --md-sys-typescale-label-large-font:           'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-label-large-size:           14px;
+  --md-sys-typescale-label-large-line-height:    20px;
+  --md-sys-typescale-label-large-weight:         500;
+  --md-sys-typescale-label-large-tracking:       0.1px;
+  --md-sys-typescale-label-medium-font:          'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-label-medium-size:          12px;
+  --md-sys-typescale-label-medium-line-height:   16px;
+  --md-sys-typescale-label-medium-weight:        500;
+  --md-sys-typescale-label-medium-tracking:      0.5px;
+  --md-sys-typescale-label-small-font:           'Roboto', 'Assistant', sans-serif;
+  --md-sys-typescale-label-small-size:           11px;
+  --md-sys-typescale-label-small-line-height:    16px;
+  --md-sys-typescale-label-small-weight:         500;
+  --md-sys-typescale-label-small-tracking:       0.5px;
+
+  /* ─── 7. SITE-LEVEL SEMANTIC ALIASES ─────────────────────────
+     Maps MD3 system tokens onto the custom property names already
+     used throughout the site's var() references. Any existing
+     page that declares its own :root overrides will override these
+     on that page only; the MD3 tokens above remain authoritative
+     and are never redeclared by inline <style> blocks.
+  ──────────────────────────────────────────────────────────────── */
+
+  /* Font stacks */
+  --font-primary:  'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
+  --font-heading:  'Roboto', 'Assistant', 'Noto Sans Hebrew', sans-serif;
+  --font-body:     var(--font-primary);
+
+  /* Backgrounds */
+  --bg-primary:     var(--md-sys-color-surface-dim);             /* #131009 */
+  --bg-secondary:   var(--md-sys-color-surface-container-low);   /* #211A14 */
+  --bg-tertiary:    var(--md-sys-color-surface-container-high);  /* #302722 */
+  --bg-glass:       rgba(240, 194, 122, .05);
+  --bg-glass-hover: rgba(240, 194, 122, .09);
+
+  /* Borders */
+  --border-glass:       rgba(78, 69, 64, .60);   /* outline-variant warm */
+  --border-glass-hover: rgba(154, 141, 134, .55); /* outline warm */
+
+  /* Accent (primary alias) */
+  --accent:             var(--md-sys-color-primary);             /* #F0C27A */
+  --accent-hover:       var(--md-sys-color-on-primary-container);/* #FFE0BA */
+  --accent-glow:        rgba(240, 194, 122, .15);
+  --accent-glow-strong: rgba(240, 194, 122, .30);
+
+  /* Text */
+  --text-primary:   var(--md-sys-color-on-surface);              /* #EDE0D4 */
+  --text-secondary: var(--md-sys-color-on-surface-variant);      /* #D1C4BC */
+  --text-heading:   #FFFFFF;
+
+  /* Shape */
+  --radius:     var(--md-sys-shape-corner-large);   /* 16px */
+  --radius-sm:  var(--md-sys-shape-corner-medium);  /* 12px */
+
+  /* Motion */
+  --transition: var(--md-sys-motion-duration-medium2)
+                var(--md-sys-motion-easing-standard); /* 300ms */
+
+  /* Layout */
+  --container: 1100px;
+}
+
+/* =================================================================
+   8. RESET & BASE
+================================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  direction: rtl;
+  line-height: 1.9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    color     var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+img { max-width: 100%; display: block; }
+
+/* Atmospheric noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* =================================================================
+   9. SITE HEADER  (shared across all pages)
+   MD3 Top App Bar — surface-container + elevation level 2
+================================================================= */
+.site-header {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-level2);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  direction: rtl;
+  overflow: hidden;
+}
+
+.site-header-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(240, 194, 122, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 194, 122, .04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.site-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.site-header-text {
+  flex: 1;
+  text-align: right;
+}
+
+.site-header-eyebrow {
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  letter-spacing: 0.4em;
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.site-header-name {
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  font-weight: 200;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+.site-header-tagline {
+  font-family: var(--font-body);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 0.08em;
+}
+
+/* TL logo mark */
+.tl-mark {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.tl-mark-outer {
+  width: 96px;
+  height: 96px;
+  border: 1px solid rgba(240, 194, 122, .35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color var(--md-sys-motion-duration-medium2)
+                            var(--md-sys-motion-easing-standard);
+}
+
+.tl-mark-outer:hover {
+  border-color: rgba(240, 194, 122, .65);
+}
+
+.tl-mark-inner {
+  width: 74px;
+  height: 74px;
+  border: 1.5px solid rgba(240, 194, 122, .65);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tl-mark-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--md-sys-color-primary);
+  border-radius: 50%;
+}
+.tl-mark-dot--top    { top: -2px;    left: 50%; transform: translateX(-50%); }
+.tl-mark-dot--right  { right: -2px;  top: 50%;  transform: translateY(-50%); }
+.tl-mark-dot--bottom { bottom: -2px; left: 50%; transform: translateX(-50%); }
+.tl-mark-dot--left   { left: -2px;   top: 50%;  transform: translateY(-50%); }
+
+.tl-mark-initials {
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  font-weight: 400;
+  color: var(--md-sys-color-primary);
+  letter-spacing: -0.03em;
+  direction: ltr;
+}
+
+/* Nav strip */
+.site-header-nav {
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.site-header-nav a {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 6px 14px;
+  border-radius: var(--md-sys-shape-corner-full);
+  transition:
+    color       var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.site-header-nav a:hover {
+  color: var(--md-sys-color-primary);
+  background: rgba(240, 194, 122, .08);
+}
+
+.nav-dot {
+  width: 3px;
+  height: 3px;
+  background: var(--md-sys-color-outline-variant);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* =================================================================
+   10. NAVBAR  (index.html — fixed top navigation bar)
+   MD3 Navigation Bar — surface-container + elevation level 2
+================================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-level2);
+  transition:
+    background   var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    box-shadow   var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+
+.navbar.scrolled {
+  background: rgba(38, 31, 24, .92);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  box-shadow: var(--md-sys-elevation-level4);
+}
+
+.nav-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--md-sys-color-outline-variant) 20%,
+    var(--md-sys-color-outline-variant) 80%,
+    transparent
+  );
+}
+
+/* Brand */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface);
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 52px;
+  filter:
+    drop-shadow(0 3px 6px rgba(0, 0, 0, .55))
+    drop-shadow(0 0 8px rgba(240, 194, 122, .18));
+  transition: filter var(--md-sys-motion-duration-medium2)
+                     var(--md-sys-motion-easing-standard),
+              transform var(--md-sys-motion-duration-medium2)
+                        var(--md-sys-motion-easing-emphasized);
+}
+
+.brand:hover .brand-mark {
+  filter:
+    drop-shadow(0 4px 10px rgba(0, 0, 0, .65))
+    drop-shadow(0 0 14px rgba(240, 194, 122, .45));
+  transform: translateY(-1px);
+}
+
+.brand-mark-svg { display: block; }
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+  color: var(--md-sys-color-on-surface);
+}
+
+.brand-tag {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--md-sys-typescale-label-small-size);
+  letter-spacing: 0.6px;
+  color: var(--md-sys-color-primary);
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  transition:
+    color       var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--md-sys-color-on-surface);
+  background: rgba(237, 224, 212, .08);
+}
+
+/* MD3 Filled Button — nav CTA */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-primary);
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  box-shadow: var(--md-sys-elevation-level0);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow      var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    transform       var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+/* MD3 state layer */
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--md-sys-color-on-primary);
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity var(--md-sys-motion-duration-short4)
+                      var(--md-sys-motion-easing-standard);
+}
+
+.nav-cta:hover {
+  box-shadow: var(--md-sys-elevation-level1);
+  transform: translateY(-1px);
+}
+.nav-cta:hover::before  { opacity: .08; }
+.nav-cta:active::before { opacity: .12; }
+
+/* Mobile hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  z-index: 1001;
+}
+
+.nav-hamburger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--md-sys-color-primary);
+  border-radius: 0;
+  transition:
+    transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    opacity   var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* =================================================================
+   11. HERO
+================================================================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  top: -100px;
+  left: -150px;
+  animation: floatOrb 15s ease-in-out infinite;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 194, 122, .07) 0%, transparent 70%);
+  bottom: -50px;
+  right: -100px;
+  animation: floatOrb 20s ease-in-out infinite reverse;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -40px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.hero-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    var(--border-glass),
+    var(--accent-glow),
+    var(--border-glass),
+    transparent
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Eyebrow pill — MD3 suggestion chip style */
+.hero-label {
+  display: inline-block;
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: 3px;
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border: 1px solid rgba(240, 194, 122, .25);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: rgba(240, 194, 122, .05);
+}
+
+/* Hero CTA — MD3 Filled Button */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: 0.5px;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--md-sys-elevation-level0);
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    transform   var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--md-sys-color-on-primary);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short4)
+                      var(--md-sys-motion-easing-standard);
+}
+
+.hero-cta:hover {
+  box-shadow: var(--md-sys-elevation-level1);
+  transform: translateY(-2px);
+}
+.hero-cta:hover::before  { opacity: .08; }
+.hero-cta:active::before { opacity: .12; }
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 550px;
+  margin: 0 auto 44px;
+  line-height: 1.8;
+}
+
+.hero h1 {
+  font-weight: 300 !important;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =================================================================
+   12. STATS BAR
+================================================================= */
+.stats {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* MD3 Elevated Card */
+.stat-item {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  transition:
+    box-shadow  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    background  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+
+.stat-item:hover {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.stat-number {
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--text-secondary);
+}
+
+/* =================================================================
+   13. SECTIONS – SHARED
+================================================================= */
+.section { padding: 100px 0; }
+
+.section-header { margin-bottom: 56px; }
+
+/* MD3 Label Large — eyebrow */
+.section-label {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: 3px;
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.25;
+}
+
+/* Primary-gradient rule */
+.section-divider {
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(
+    to left,
+    var(--md-sys-color-primary),
+    var(--md-sys-color-primary-container)
+  );
+  border-radius: var(--md-sys-shape-corner-full);
+  margin-top: 20px;
+}
+
+/* =================================================================
+   14. ABOUT
+================================================================= */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-text p {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.about-text p:last-child { margin-bottom: 0; }
+
+.about-quote {
+  margin: 28px 0;
+  padding: 14px 22px;
+  border-right: 2px solid var(--accent);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--text-heading);
+  font-weight: 300;
+}
+
+.about-visual {
+  position: relative;
+  height: 420px;
+  border-radius: var(--md-sys-shape-corner-large);
+  overflow: hidden;
+}
+
+.about-visual-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.about-visual-inner::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about-visual-icon { position: relative; z-index: 1; }
+
+.about-visual-icon svg {
+  width: 80px;
+  height: 80px;
+  fill: none;
+  stroke: var(--md-sys-color-primary);
+  stroke-width: 1;
+}
+
+.about-badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* MD3 Assist Chip (unselected) */
+.about-badge {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  color: var(--md-sys-color-on-surface-variant);
+  transition:
+    background  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    color       var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.about-badge:hover {
+  background: rgba(240, 194, 122, .08);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
+}
+
+/* =================================================================
+   15. PRACTICE AREAS
+================================================================= */
+.areas { background: var(--bg-secondary); }
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* MD3 Elevated Card */
+.area-card {
+  padding: 36px 28px;
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  transition:
+    box-shadow  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    background  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    transform   var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top primary accent rule on hover */
+.area-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to left, var(--md-sys-color-primary), transparent);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-medium2)
+                      var(--md-sys-motion-easing-standard);
+}
+
+.area-card:hover {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-level2);
+  transform: translateY(-4px);
+}
+
+.area-card:hover::before { opacity: 1; }
+
+/* Icon container — MD3 tonal icon button style */
+.area-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(240, 194, 122, .08);
+  border: 1px solid rgba(240, 194, 122, .20);
+  border-radius: var(--md-sys-shape-corner-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.area-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--md-sys-color-primary);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.area-card h3 {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  color: var(--text-heading);
+  margin-bottom: 10px;
+}
+
+.area-card p {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* =================================================================
+   16. ARTICLE CARDS  (index.html grid)
+================================================================= */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* MD3 Elevated Card */
+.article-card {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  transition:
+    box-shadow  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    transform   var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+  cursor: pointer;
+}
+
+.article-card:hover {
+  box-shadow: var(--md-sys-elevation-level3);
+  border-color: var(--md-sys-color-outline);
+  transform: translateY(-4px);
+}
+
+.article-card-img {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.article-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--md-sys-motion-duration-long2)
+                        var(--md-sys-motion-easing-standard);
+}
+
+.article-card:hover .article-card-img img {
+  transform: scale(1.05);
+}
+
+.article-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(19, 16, 9, .6) 0%, transparent 60%);
+}
+
+/* MD3 Suggestion Chip — category tag */
+.article-card-category {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+  color: var(--md-sys-color-primary);
+  padding: 5px 12px;
+  border: 1px solid rgba(240, 194, 122, .30);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: rgba(14, 11, 8, .78);
+  backdrop-filter: blur(10px);
+}
+
+.article-card-body {
+  padding: 24px 24px 20px;
+}
+
+.article-card-body h3 {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  color: var(--text-heading);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.article-card-body p {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.article-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  color: var(--text-secondary);
+}
+
+.article-card-arrow {
+  font-size: 1.2rem;
+  color: var(--md-sys-color-primary);
+  transition: transform var(--md-sys-motion-duration-short4)
+                        var(--md-sys-motion-easing-emphasized);
+}
+
+.article-card:hover .article-card-arrow {
+  transform: translateX(-6px);
+}
+
+/* =================================================================
+   17. BADGE
+================================================================= */
+/* MD3 Badge component */
+.badge-new {
+  display: inline-block;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  line-height: 1.6;
+}
+
+/* =================================================================
+   18. VIDEO CARDS
+================================================================= */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* MD3 Elevated Card */
+.video-card {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  overflow: hidden;
+  transition:
+    box-shadow   var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    transform    var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+}
+
+.video-card:hover {
+  box-shadow: var(--md-sys-elevation-level3);
+  border-color: var(--md-sys-color-outline);
+  transform: translateY(-4px);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177.78%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-card-body { padding: 18px 20px; }
+
+.video-card-body h3 {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.video-card-body p {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* =================================================================
+   19. TIMELINE
+================================================================= */
+.timeline {
+  position: relative;
+  max-width: 700px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--md-sys-color-primary), var(--border-glass));
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-right: 56px;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--md-sys-color-primary);
+  z-index: 1;
+}
+
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--md-sys-color-primary);
+}
+
+/* MD3 Elevated Card (small) */
+.timeline-card {
+  padding: 28px;
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: var(--md-sys-elevation-level1);
+  transition:
+    box-shadow  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    background  var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+
+.timeline-card:hover {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.timeline-period {
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  color: var(--md-sys-color-primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.timeline-role {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.timeline-desc {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* =================================================================
+   20. CONTACT
+================================================================= */
+.contact { background: var(--bg-secondary); }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.contact-text {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* MD3 tonal icon container */
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(240, 194, 122, .08);
+  border: 1px solid rgba(240, 194, 122, .15);
+  border-radius: var(--md-sys-shape-corner-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--md-sys-color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-item-label {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.contact-item-value {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: 1rem;
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.contact-item-value a {
+  transition: color var(--md-sys-motion-duration-short4)
+                    var(--md-sys-motion-easing-standard);
+}
+
+.contact-item-value a:hover { color: var(--md-sys-color-primary); }
+
+/* MD3 Filled Card — contact form */
+.contact-form-card {
+  padding: 36px;
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.contact-form-title {
+  font-family: var(--md-sys-typescale-headline-small-font);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 24px;
+}
+
+/* =================================================================
+   21. ARTICLE PAGES – NAV & LAYOUT
+   (site-nav, breadcrumb, article-wrap)
+================================================================= */
+
+/* Article sticky nav — MD3 Top App Bar */
+nav.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--md-sys-color-surface-container);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--md-sys-elevation-level2);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-logo {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--md-sys-color-primary); }
+
+nav.site-nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav.site-nav .nav-links a {
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  padding: 6px 12px;
+  border-radius: var(--md-sys-shape-corner-full);
+  transition:
+    color       var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+nav.site-nav .nav-links a:hover {
+  color: var(--md-sys-color-primary);
+  background: rgba(240, 194, 122, .08);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.breadcrumb a {
+  color: var(--md-sys-color-on-surface-variant);
+  transition: color var(--md-sys-motion-duration-short4)
+                    var(--md-sys-motion-easing-standard);
+}
+
+.breadcrumb a:hover { color: var(--md-sys-color-primary); }
+.breadcrumb span    { margin: 0 0.35rem; opacity: .4; }
+
+/* =================================================================
+   22. ARTICLE CONTENT COMPONENTS
+================================================================= */
+
+/* Article header */
+.article-tag {
+  display: inline-block;
+  background: rgba(240, 194, 122, .10);
+  color: var(--md-sys-color-primary);
+  border: 1px solid rgba(240, 194, 122, .30);
+  border-radius: var(--md-sys-shape-corner-small);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Hero image */
+.article-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  object-fit: cover;
+}
+
+/* TOC — MD3 Elevated Card */
+.toc {
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  padding: 1.4rem 1.8rem;
+  margin: 2rem 0;
+}
+
+.toc-title {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.9rem;
+}
+
+.toc ol li {
+  border-bottom-color: rgba(240, 194, 122, .08);
+}
+
+.toc ol li::before {
+  color: var(--md-sys-color-primary);
+}
+
+.toc a {
+  color: var(--md-sys-color-on-surface-variant);
+  transition: color var(--md-sys-motion-duration-short4)
+                    var(--md-sys-motion-easing-standard);
+}
+
+.toc a:hover { color: var(--md-sys-color-primary); }
+
+/* Horizontal rule */
+.rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(240, 194, 122, .25),
+    transparent
+  );
+  margin: 2.5rem 0;
+  border: none;
+  display: block;
+}
+
+/* Featured snippet — MD3 tonal surface with left border */
+.featured-snippet {
+  background: rgba(240, 194, 122, .06);
+  border: 1px solid rgba(240, 194, 122, .22);
+  border-right: 3px solid var(--md-sys-color-primary);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 1.3rem 1.6rem;
+  margin: 0 0 2rem;
+}
+
+/* Data table — MD3 table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0 1.8rem;
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.data-table th {
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  padding: 0.7rem 1rem;
+  text-align: right;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.data-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(78, 69, 64, .30);
+  color: var(--text-primary);
+  font-weight: 300;
+  vertical-align: top;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table td strong        { color: var(--text-heading); font-weight: 500; }
+
+/* Case card — MD3 Outlined Card with primary-color left rule */
+.case-card {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-right: 2px solid var(--md-sys-color-primary);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  padding: 1rem 1.4rem;
+  margin: 1.2rem 0;
+}
+
+.case-ref {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  color: var(--md-sys-color-primary);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.case-text {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Checklist — MD3 Filled Card */
+.checklist {
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  padding: 1.6rem 2rem;
+  margin: 2rem 0;
+}
+
+.checklist-title {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  color: var(--text-heading);
+  margin-bottom: 1rem;
+}
+
+.checklist ul li::before {
+  color: var(--md-sys-color-primary);
+}
+
+.checklist-note {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  color: var(--md-sys-color-primary);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Pullquote — MD3 tonal surface */
+.pullquote {
+  background: rgba(240, 194, 122, .05);
+  border: 1px solid rgba(240, 194, 122, .20);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 1.6rem 2rem;
+  margin: 2.2rem 0;
+  text-align: center;
+}
+
+.pullquote p  { color: var(--text-heading); }
+.pullquote em { color: var(--md-sys-color-primary); font-style: normal; font-weight: 500; }
+
+/* Steps — numbered list with MD3 primary avatar */
+.steps li::before {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+/* CTA block — MD3 Elevated Card + Filled Button */
+.cta-block {
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level2);
+  padding: 2.2rem 2.5rem;
+  margin: 3rem 0 1rem;
+  text-align: center;
+}
+
+/* MD3 Filled Button */
+.cta-btn {
+  display: inline-block;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  padding: 0.85rem 2.5rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    transform   var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--md-sys-color-on-primary);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short4)
+                      var(--md-sys-motion-easing-standard);
+}
+
+.cta-btn:hover {
+  box-shadow: var(--md-sys-elevation-level1);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.cta-btn:hover::before  { opacity: .08; }
+.cta-btn:active::before { opacity: .12; }
+
+.cta-disclaimer {
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  opacity: .65;
+}
+
+/* Related articles */
+.related-label {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+/* MD3 Tonal Chip / Outlined Card */
+.related-link {
+  display: block;
+  background: var(--md-sys-color-surface-container-high);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 0.9rem 1.1rem;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: 300;
+  transition:
+    border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    color        var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background   var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  line-height: 1.45;
+}
+
+.related-link:hover {
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface-container-highest);
+  text-decoration: none;
+}
+
+.related-link .arrow { color: var(--md-sys-color-primary); margin-left: 0.25rem; }
+
+/* Legal footer */
+.legal-footer {
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  font-weight: 300;
+  color: var(--md-sys-color-on-surface-variant);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  line-height: 1.7;
+}
+
+.legal-footer a      { color: var(--md-sys-color-primary); }
+.legal-footer strong { color: var(--md-sys-color-on-surface); font-weight: 500; }
+
+/* =================================================================
+   23. PREGNANCY ARTICLE – UNIQUE COMPONENTS
+================================================================= */
+
+/* Decision Junction heading — primary numbered circle */
+.junction-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2.5rem 0 0.9rem;
+}
+
+.junction-heading .junction-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  min-width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.junction-heading h2 { margin: 0; padding-top: 0; }
+
+/* Legal note — MD3 Tonal Banner with left rule */
+.legal-note {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-right: 3px solid var(--md-sys-color-primary);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  padding: 1.1rem 1.5rem;
+  margin: 1.2rem 0;
+}
+
+.legal-note-label {
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  color: var(--md-sys-color-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.legal-note-ref {
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  color: var(--md-sys-color-primary);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.04em;
+}
+
+.legal-note p {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.75;
+}
+
+/* Distinction grid — mistake vs. negligence */
+.distinction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.2rem 0 1.8rem;
+}
+
+.distinction-box {
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 1.2rem 1.4rem;
+}
+
+/* Neutral side — MD3 surface-container */
+.distinction-box.mistake {
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* Primary side — MD3 primary-container tint */
+.distinction-box.negligence {
+  background: rgba(69, 36, 0, .35);   /* primary-container at 35% */
+  border: 1px solid rgba(240, 194, 122, .28);
+}
+
+.distinction-box-label {
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.distinction-box.mistake .distinction-box-label    { color: var(--md-sys-color-on-surface-variant); }
+.distinction-box.negligence .distinction-box-label { color: var(--md-sys-color-primary); }
+
+.distinction-box ul { list-style: none; }
+
+.distinction-box ul li {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: 300;
+  padding: 0.3rem 0;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.distinction-box ul li::before                    { content: '— '; color: var(--md-sys-color-on-surface-variant); }
+.distinction-box.negligence ul li::before         { color: var(--md-sys-color-primary); }
+
+/* =================================================================
+   24. REVEAL ANIMATION
+================================================================= */
+.reveal { opacity: 1; }   /* fallback if JS unavailable */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =================================================================
+   25. RESPONSIVE
+================================================================= */
+@media (max-width: 860px) {
+  .nav-links,
+  .nav-cta    { display: none; }
+  .nav-hamburger { display: flex; }
+  .brand-tag  { display: none; }
+
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 640px) {
+  nav.site-nav .nav-links { display: none; }
+  .distinction-grid       { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .site-header-inner { padding: 1.2rem; }
+  .site-header-name  { font-size: 1.5rem; }
+  .tl-mark,
+  .tl-mark-outer     { width: 64px; height: 64px; }
+  .tl-mark-inner     { width: 50px; height: 50px; }
+  .tl-mark-initials  { font-size: 1.2rem; }
+  .site-header-nav   { gap: 1rem; }
+  .site-header-nav a {
+    font-size: var(--md-sys-typescale-label-small-size);
+    letter-spacing: 0.15em;
+  }
+  .nav-dot           { display: none; }
+
+  .videos-grid       { grid-template-columns: 1fr; max-width: 340px; }
+  .stats-grid        { grid-template-columns: 1fr; }
+  .about-content     { grid-template-columns: 1fr; }
+  .contact-layout    { grid-template-columns: 1fr; }
+  .areas-grid        { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   UTILITY CLASSES
+============================================ */
+
+/* Accent-colored text/links — replaces style="color: var(--accent)" inline usages */
+.text-accent {
+  color: var(--accent);
+}
+
+/* Visually hidden but accessible to screen readers (replaces style="display:none")
+   Use for semantic elements (headings, landmarks) that aid navigation but need
+   no visual presence. display:none would also hide from assistive technology. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
+   WHATSAPP FAB (Floating Action Button)
+   Shared across all pages — extracted from per-page <style> blocks
+============================================ */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  transition: var(--transition);
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-fab svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
