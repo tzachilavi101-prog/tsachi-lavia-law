@@ -2,7 +2,8 @@
    tsachi-lavia-law  ·  Material Design 3 System
    Theme   : Dark
    Seed    : #c8956c  (Warm Amber / Terracotta)
-   Fonts   : Assistant  (Hebrew + Latin, weights 200–700)
+   Fonts   : Roboto (Latin/UI labels)  ·  Assistant (Hebrew body)
+             Noto Sans Hebrew (Hebrew fallback)
    ─────────────────────────────────────────────────────────────
    Structure:
      1.  Font Import
@@ -33,9 +34,7 @@
 ================================================================= */
 
 /* ─── 1. FONT IMPORT ──────────────────────────────────────────── */
-/* Fonts are loaded via <link rel="stylesheet"> in each page's <head>
-   (non-blocking; avoids an @import round-trip). See index.html /
-   article-*.html for the Assistant family declaration. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Assistant:wght@300;400;500;600;700&family=Noto+Sans+Hebrew:wght@300;400;500;700&display=swap');
 
 /* ─── 2. MD3 SYSTEM COLOR TOKENS  (dark, seed #c8956c) ────────── */
 :root {
@@ -136,75 +135,75 @@
 
   /* ─── 6. MD3 TYPOGRAPHY TOKENS ──────────────────────────────── */
   /* Display */
-  --md-sys-typescale-display-large-font:         'Assistant', sans-serif;
+  --md-sys-typescale-display-large-font:         'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-display-large-size:         57px;
   --md-sys-typescale-display-large-line-height:  64px;
   --md-sys-typescale-display-large-weight:       400;
   --md-sys-typescale-display-large-tracking:     -0.25px;
-  --md-sys-typescale-display-medium-font:        'Assistant', sans-serif;
+  --md-sys-typescale-display-medium-font:        'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-display-medium-size:        45px;
   --md-sys-typescale-display-medium-line-height: 52px;
   --md-sys-typescale-display-medium-weight:      400;
-  --md-sys-typescale-display-small-font:         'Assistant', sans-serif;
+  --md-sys-typescale-display-small-font:         'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-display-small-size:         36px;
   --md-sys-typescale-display-small-line-height:  44px;
   --md-sys-typescale-display-small-weight:       400;
   /* Headline */
-  --md-sys-typescale-headline-large-font:        'Assistant', sans-serif;
+  --md-sys-typescale-headline-large-font:        'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-headline-large-size:        32px;
   --md-sys-typescale-headline-large-line-height: 40px;
   --md-sys-typescale-headline-large-weight:      400;
-  --md-sys-typescale-headline-medium-font:       'Assistant', sans-serif;
+  --md-sys-typescale-headline-medium-font:       'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-headline-medium-size:       28px;
   --md-sys-typescale-headline-medium-line-height:36px;
   --md-sys-typescale-headline-medium-weight:     400;
-  --md-sys-typescale-headline-small-font:        'Assistant', sans-serif;
+  --md-sys-typescale-headline-small-font:        'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-headline-small-size:        24px;
   --md-sys-typescale-headline-small-line-height: 32px;
   --md-sys-typescale-headline-small-weight:      400;
   /* Title */
-  --md-sys-typescale-title-large-font:           'Assistant', sans-serif;
+  --md-sys-typescale-title-large-font:           'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-title-large-size:           22px;
   --md-sys-typescale-title-large-line-height:    28px;
   --md-sys-typescale-title-large-weight:         400;
-  --md-sys-typescale-title-medium-font:          'Assistant', sans-serif;
+  --md-sys-typescale-title-medium-font:          'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-title-medium-size:          16px;
   --md-sys-typescale-title-medium-line-height:   24px;
   --md-sys-typescale-title-medium-weight:        500;
   --md-sys-typescale-title-medium-tracking:      0.15px;
-  --md-sys-typescale-title-small-font:           'Assistant', sans-serif;
+  --md-sys-typescale-title-small-font:           'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-title-small-size:           14px;
   --md-sys-typescale-title-small-line-height:    20px;
   --md-sys-typescale-title-small-weight:         500;
   --md-sys-typescale-title-small-tracking:       0.1px;
   /* Body — Hebrew-first stack */
-  --md-sys-typescale-body-large-font:            'Assistant', sans-serif;
+  --md-sys-typescale-body-large-font:            'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
   --md-sys-typescale-body-large-size:            16px;
   --md-sys-typescale-body-large-line-height:     24px;
   --md-sys-typescale-body-large-weight:          400;
   --md-sys-typescale-body-large-tracking:        0.5px;
-  --md-sys-typescale-body-medium-font:           'Assistant', sans-serif;
+  --md-sys-typescale-body-medium-font:           'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
   --md-sys-typescale-body-medium-size:           14px;
   --md-sys-typescale-body-medium-line-height:    20px;
   --md-sys-typescale-body-medium-weight:         400;
   --md-sys-typescale-body-medium-tracking:       0.25px;
-  --md-sys-typescale-body-small-font:            'Assistant', sans-serif;
+  --md-sys-typescale-body-small-font:            'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
   --md-sys-typescale-body-small-size:            12px;
   --md-sys-typescale-body-small-line-height:     16px;
   --md-sys-typescale-body-small-weight:          400;
   --md-sys-typescale-body-small-tracking:        0.4px;
   /* Label */
-  --md-sys-typescale-label-large-font:           'Assistant', sans-serif;
+  --md-sys-typescale-label-large-font:           'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-label-large-size:           14px;
   --md-sys-typescale-label-large-line-height:    20px;
   --md-sys-typescale-label-large-weight:         500;
   --md-sys-typescale-label-large-tracking:       0.1px;
-  --md-sys-typescale-label-medium-font:          'Assistant', sans-serif;
+  --md-sys-typescale-label-medium-font:          'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-label-medium-size:          12px;
   --md-sys-typescale-label-medium-line-height:   16px;
   --md-sys-typescale-label-medium-weight:        500;
   --md-sys-typescale-label-medium-tracking:      0.5px;
-  --md-sys-typescale-label-small-font:           'Assistant', sans-serif;
+  --md-sys-typescale-label-small-font:           'Roboto', 'Assistant', sans-serif;
   --md-sys-typescale-label-small-size:           11px;
   --md-sys-typescale-label-small-line-height:    16px;
   --md-sys-typescale-label-small-weight:         500;
@@ -219,8 +218,8 @@
   ──────────────────────────────────────────────────────────────── */
 
   /* Font stacks */
-  --font-primary:  'Assistant', sans-serif;
-  --font-heading:  'Assistant', sans-serif;
+  --font-primary:  'Assistant', 'Roboto', 'Noto Sans Hebrew', sans-serif;
+  --font-heading:  'Roboto', 'Assistant', 'Noto Sans Hebrew', sans-serif;
   --font-body:     var(--font-primary);
 
   /* Backgrounds */
@@ -255,11 +254,6 @@
 
   /* Layout */
   --container: 1100px;
-
-  /* Header height — override per-page via inline :root.
-     Index.html uses the tall .site-header (~220px).
-     Article pages use the compact nav.site-nav (~72px). */
-  --nav-height: 220px;
 }
 
 /* =================================================================
@@ -273,7 +267,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height, 80px);
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -297,31 +291,6 @@ a {
 }
 
 img { max-width: 100%; display: block; }
-
-/* Global keyboard-focus ring (WCAG 2.4.7).
-   Applied to every interactive element; individual components may
-   override if they need a tighter ring or different offset. */
-a:focus-visible,
-button:focus-visible,
-[role="button"]:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible,
-summary:focus-visible {
-  outline: 2px solid var(--md-sys-color-primary);
-  outline-offset: 2px;
-  border-radius: var(--md-sys-shape-corner-small);
-}
-
-/* Card-style anchors get a tighter offset so the ring hugs the card edge. */
-.article-card:focus-visible,
-.area-card:focus-visible,
-.video-card:focus-visible,
-.stat-item:focus-visible,
-.related-link:focus-visible {
-  outline: 2px solid var(--md-sys-color-primary);
-  outline-offset: 3px;
-}
 
 /* Atmospheric noise texture */
 body::before {
@@ -825,10 +794,13 @@ body::before {
   line-height: 1.8;
 }
 
-/* Hero H1 weight is deliberately light — coordinates with the
-   site-header-name (weight 200) so the firm name doesn't appear
-   in two conflicting weights on the same fold. */
-.hero h1 { font-weight: 300; }
+.hero h1 {
+  font-weight: 300 !important;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* =================================================================
    12. STATS BAR
@@ -1476,12 +1448,11 @@ body::before {
 
 .contact-item-value a:hover { color: var(--md-sys-color-primary); }
 
-/* MD3 Filled Card — contact form.
-   Elevation level 2 handles the lift; border is dropped to avoid
-   the double-outline look that MD3 flags as anti-pattern on dark. */
+/* MD3 Filled Card — contact form */
 .contact-form-card {
   padding: 36px;
   background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
   border-radius: var(--md-sys-shape-corner-large);
   box-shadow: var(--md-sys-elevation-level2);
 }
@@ -1493,84 +1464,6 @@ body::before {
   color: var(--text-heading);
   margin-bottom: 24px;
 }
-
-/* Form groups — centralised so every page consuming .contact-form-card
-   renders identically. Previously lived inline in index.html. */
-.form-group { margin-bottom: 18px; }
-
-.form-group label {
-  display: block;
-  font-family: var(--md-sys-typescale-label-medium-font);
-  font-size: var(--md-sys-typescale-label-medium-size);
-  color: var(--text-secondary);
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-sys-shape-corner-medium);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  outline: none;
-  direction: rtl;
-  transition:
-    border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
-    box-shadow   var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--md-sys-color-primary);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.form-group textarea {
-  height: 110px;
-  resize: vertical;
-}
-
-/* MD3 Filled Button — form submit */
-.form-submit {
-  width: 100%;
-  padding: 16px;
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  font-family: var(--md-sys-typescale-label-large-font);
-  font-size: var(--md-sys-typescale-label-large-size);
-  font-weight: var(--md-sys-typescale-label-large-weight);
-  letter-spacing: var(--md-sys-typescale-label-large-tracking);
-  border: none;
-  border-radius: var(--md-sys-shape-corner-full);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition:
-    box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
-    transform  var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
-}
-
-.form-submit::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--md-sys-color-on-primary);
-  opacity: 0;
-  transition: opacity var(--md-sys-motion-duration-short4)
-                      var(--md-sys-motion-easing-standard);
-}
-
-.form-submit:hover {
-  box-shadow: var(--md-sys-elevation-level1);
-  transform: translateY(-1px);
-}
-.form-submit:hover::before  { opacity: 0.08; }
-.form-submit:active::before { opacity: 0.12; }
 
 /* =================================================================
    21. ARTICLE PAGES – NAV & LAYOUT
@@ -1844,10 +1737,10 @@ nav.site-nav .nav-links a:hover {
   color: var(--md-sys-color-on-primary);
 }
 
-/* CTA block — MD3 Elevated Card. Elevation handles separation
-   from the article surface; no outer border needed. */
+/* CTA block — MD3 Elevated Card + Filled Button */
 .cta-block {
   background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
   border-radius: var(--md-sys-shape-corner-large);
   box-shadow: var(--md-sys-elevation-level2);
   padding: 2.2rem 2.5rem;
@@ -2075,33 +1968,11 @@ nav.site-nav .nav-links a:hover {
 
 /* =================================================================
    24. REVEAL ANIMATION
-   Applied by an IntersectionObserver in index.html / article pages.
 ================================================================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity   0.7s var(--md-sys-motion-easing-standard),
-    transform 0.7s var(--md-sys-motion-easing-standard);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-
-/* Fallback: if JS never runs, the element must still be visible. */
-.no-js .reveal,
-html:not(.js) .reveal { opacity: 1; transform: none; }
+.reveal { opacity: 1; }   /* fallback if JS unavailable */
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal { opacity: 1; transform: none; }
   *,
   *::before,
   *::after {
@@ -2137,15 +2008,10 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   .tl-mark-outer     { width: 64px; height: 64px; }
   .tl-mark-inner     { width: 50px; height: 50px; }
   .tl-mark-initials  { font-size: 1.2rem; }
-  .site-header-nav   { gap: 0.5rem; }
+  .site-header-nav   { gap: 1rem; }
   .site-header-nav a {
     font-size: var(--md-sys-typescale-label-small-size);
     letter-spacing: 0.15em;
-    /* Raise touch target to >=44px (WCAG 2.5.5). */
-    min-height: 44px;
-    padding: 12px 14px;
-    display: inline-flex;
-    align-items: center;
   }
   .nav-dot           { display: none; }
 
